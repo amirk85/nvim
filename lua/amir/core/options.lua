@@ -1,12 +1,12 @@
 local opt = vim.opt
 
-opt.relativenumber = false -- show relative line numbers
+opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
--- opt.smartindent = true
+opt.smartindent = true
 
 opt.wrap = true -- disable line wrapping
 opt.winbar = "%=%m %t"

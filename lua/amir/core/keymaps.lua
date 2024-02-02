@@ -1,13 +1,15 @@
--- set leader key to space
-vim.g.mapleader = " "
+vim.g.mapleader = " " -- set leader key to space
 
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "<C-s>", ":w<CR>", opts) -- add new line without leaving normal mode
+keymap.set("v", "<leader>fm", "=", { desc = "format code" })
+keymap.set("n", "<leader>fm", "mzgg=G`z", { desc = "format code" }) -- formats entire file without moving the cursor
 
-keymap.set("n", "<Leader>o", "o<Esc>", opts) -- add new line without leaving normal mode
-keymap.set("n", "<Leader>O", "O<Esc>", opts) -- add new line without leaving normal mode
+keymap.set("n", "<C-s>", ":w<CR>", opts) -- adds new line without leaving normal mode
+
+keymap.set("n", "<Leader>o", "o<Esc>", opts) -- adds new line without leaving normal mode
+keymap.set("n", "<Leader>O", "O<Esc>", opts) -- adds new line without leaving normal mode
 
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
@@ -56,7 +58,6 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- tabs
-
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 keymap.set("n", "<leader>tx", ":tabclose<Return>", opts)
