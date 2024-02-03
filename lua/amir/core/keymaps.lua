@@ -3,16 +3,24 @@ vim.g.mapleader = " " -- set leader key to space
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
+--formats and removes whitespaces keeping without moving the cursor from its position
+function TrimWhitespaceAndFormat()
+	local save_view = vim.fn.winsaveview()
+	vim.cmd([[execute "normal! mzgg=G`z"]])
+	vim.cmd([[keeppatterns %s/\s\+$//e]])
+	vim.fn.winrestview(save_view)
+end
+
 keymap.set("v", "<leader>fm", "=", { desc = "format code" })
-keymap.set("n", "<leader>fm", "mzgg=G`z", { desc = "format code" }) -- formats entire file without moving the cursor
+keymap.set("n", "<leader>fm", TrimWhitespaceAndFormat, { noremap = true, silent = true, desc = "format code" })
 
 keymap.set("n", "<C-s>", ":w<CR>", opts) -- adds new line without leaving normal mode
 
 keymap.set("n", "<Leader>o", "o<Esc>", opts) -- adds new line without leaving normal mode
 keymap.set("n", "<Leader>O", "O<Esc>", opts) -- adds new line without leaving normal mode
 
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 keymap.set("n", "x", '"_x')
 keymap.set("n", "<C-a>", "gg<S-v>G") -- selects all
