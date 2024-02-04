@@ -59,6 +59,15 @@ return {
 		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
 	},
 
+
+	-- buffer maximizer
+	{
+		"szw/vim-maximizer",
+		keys = {
+			{ "sm", "<cmd>MaximizerToggle<CR>", desc = "Maximize/minimize a split" }
+		},
+	},
+
 	-- which key
 	{
 		"folke/which-key.nvim",
