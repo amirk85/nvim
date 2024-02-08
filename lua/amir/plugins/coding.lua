@@ -1,4 +1,21 @@
 return {
+	-- run program
+	{
+		'arjunmahishi/flow.nvim',
+		config = function ()
+			require('flow').setup {
+				output = {
+					buffer = true,
+					split_cmd = "80vsplit",
+					focused = true,
+					modifiable = false,
+				},
+			}
+			vim.keymap.set('n', '<leader>R', ':FlowRunFile<CR>', { silent = true, desc = "Run file" })
+			vim.keymap.set('v', '<leader>R', ':FlowRunSelected<CR>', { silent = true, desc = "Run file" })
+
+		end
+	},
 	-- bracketpairs
 	{
 		"windwp/nvim-autopairs",

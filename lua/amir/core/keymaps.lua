@@ -22,8 +22,7 @@ keymap.set("n", "<Leader>O", "O<Esc>", opts) -- adds new line without leaving no
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-keymap.set("n", "x", '"_x')
-keymap.set("n", "<C-a>", "gg<S-v>G") -- selects all
+keymap.set("n", "<C-a>", "ggVG") -- selects all
 
 vim.api.nvim_set_keymap("n", "E", "$", { noremap = false })
 vim.api.nvim_set_keymap("n", "B", "^", { noremap = false })
@@ -54,7 +53,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "x", '"_x')
 
 -- window management
-keymap.set("n", "ss", "<C-w>s", opts) -- split window vertically
+keymap.set("n", "sh", "<C-w>s", opts) -- split window vertically
 keymap.set("n", "sv", "<C-w>v", opts) -- split window horizontally
 keymap.set("n", "se", "<C-w>=", opts) -- make split windows equal width & height
 keymap.set("n", "sx", ":close<CR>", opts) -- close current split window

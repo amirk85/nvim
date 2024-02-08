@@ -8,8 +8,8 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.smartindent = true
 
-opt.wrap = true -- disable line wrapping
-opt.winbar = "%=%m %t"
+opt.wrap = false -- disable line wrapping
+opt.winbar = "%=%m %t"  -- shows buffer name at top right
 
 -- search settings
 opt.swapfile = false

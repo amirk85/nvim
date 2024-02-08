@@ -285,12 +285,12 @@ return {
 		local opts = { noremap = true, silent = true }
 
 		opts.desc = "File tree float"
-		keymap.set("n", "<leader>eE", ":Neotree toggle float<CR>", opts)
+		keymap.set("n", "<leader>ee", ":Neotree toggle float<CR>", opts)
 
 		opts.desc = "File tree left"
 		keymap.set("n", "<leader>el", ":Neotree toggle left<CR>", opts)
 
 		opts.desc = "Neotree: File Tree cwd"
-		keymap.set("n", "<leader>ee", ":Neotree toggle reveal_force_cwd<CR>", opts)
+		keymap.set("n", "<leader>eE", ":Neotree toggle reveal_force_cwd<CR>", opts)
 	end,
 }

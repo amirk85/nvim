@@ -38,6 +38,8 @@ return {
 					"vim",
 					"gitignore",
 					"query",
+					"go",
+					"sql"
 				},
 				incremental_selection = {
 					enable = true,
