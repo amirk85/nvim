@@ -9,12 +9,12 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 
 		config = function()
+
+			vim.opt.conceallevel = 2
+
 			require("obsidian").setup({
 				use_advanced_uri = true,
 				dir = "~/Documents/second-brain",
-				-- daily_notes = {
-				-- 	folder = "dailies",
-				-- },
 				completion = {
 					nvim_cmp = true,
 				},

@@ -40,6 +40,3 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
---
--- Concealer for obsidian
-vim.o.conceallevel=2

@@ -1,21 +1,63 @@
 return {
 	-- run program
 	{
-		'arjunmahishi/flow.nvim',
-		config = function ()
-			require('flow').setup {
+		"arjunmahishi/flow.nvim",
+		config = function()
+			require("flow").setup({
 				output = {
 					buffer = true,
 					split_cmd = "80vsplit",
 					focused = true,
 					modifiable = false,
 				},
-			}
-			vim.keymap.set('n', '<leader>R', ':FlowRunFile<CR>', { silent = true, desc = "Run file" })
-			vim.keymap.set('v', '<leader>R', ':FlowRunSelected<CR>', { silent = true, desc = "Run file" })
-
-		end
+			})
+			vim.keymap.set("n", "<leader>R", ":FlowRunFile<CR>", { silent = true, desc = "Run file" })
+			vim.keymap.set("v", "<leader>R", ":FlowRunSelected<CR>", { silent = true, desc = "Run file" })
+		end,
 	},
+
+	-- formatting
+	{
+		"stevearc/conform.nvim",
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+		config = function()
+			local conform = require("conform")
+
+			conform.setup({
+				formatters_by_ft = {
+					javascriptf = { "prettier" },
+					typescript = { "prettier" },
+					javascriptreact = { "prettier" },
+					typescriptreact = { "prettier" },
+					css = { "prettier" },
+					html = { "prettier" },
+					json = { "prettier" },
+					yaml = { "prettier" },
+					markdown = { "prettier" },
+					lua = { "stylua" },
+				},
+				-- format_on_save = {
+				-- 	lsp_fallback = true,
+				-- 	async = false,
+				-- 	timeout_ms = 1000,
+				-- },
+			})
+
+			vim.keymap.set({ "n", "v" }, "<leader>fm", function()
+				conform.format({
+					lsp_fallback = true,
+					async = false,
+					timeout_ms = 1000,
+				})
+
+				-- local save_view = vim.fn.winsaveview()
+				vim.cmd([[execute "normal! mzgg=G`z"]])
+				-- vim.fn.winrestview(save_view)
+			end, { desc = "Format file or range (in visual mode)" })
+		end,
+	},
+
 	-- bracketpairs
 	{
 		"windwp/nvim-autopairs",
@@ -72,17 +114,48 @@ return {
 		},
 		opts = {},
 	},
+
 	-- UFO code folding
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = "kevinhwang91/promise-async",
 		event = "VimEnter",
 		keys = {
-			{ "zr", function() require("ufo").openFoldsExceptKinds({ "comment", "imports" }) end, desc = "Open All Regular Folds", },
-			{ "z1", function() require("ufo").closeFoldsWith(1) end, desc = "Close L1 Folds" },
-			{ "z2", function() require("ufo").closeFoldsWith(2) end, desc = "Close L2 Folds" },
-			{ "z3", function() require("ufo").closeFoldsWith(3) end, desc = "Close L3 Folds" },
-			{ "z4", function() require("ufo").closeFoldsWith(4) end, desc = "Close L4 Folds" },
+			{
+				"zr",
+				function()
+					require("ufo").openFoldsExceptKinds({ "comment", "imports" })
+				end,
+				desc = "Open All Regular Folds",
+			},
+			{
+				"z1",
+				function()
+					require("ufo").closeFoldsWith(1)
+				end,
+				desc = "Close L1 Folds",
+			},
+			{
+				"z2",
+				function()
+					require("ufo").closeFoldsWith(2)
+				end,
+				desc = "Close L2 Folds",
+			},
+			{
+				"z3",
+				function()
+					require("ufo").closeFoldsWith(3)
+				end,
+				desc = "Close L3 Folds",
+			},
+			{
+				"z4",
+				function()
+					require("ufo").closeFoldsWith(4)
+				end,
+				desc = "Close L4 Folds",
+			},
 		},
 		init = function()
 			vim.opt.foldlevel = 99
@@ -90,9 +163,6 @@ return {
 		end,
 		opts = {
 			provider_selector = function(_, ft, _)
-				-- INFO some filetypes only allow indent, some only LSP, some only
-				-- treesitter. However, ufo only accepts two kinds as priority,
-				-- therefore making this function necessary :/
 				local lspWithOutFolding = { "markdown", "sh", "css", "html", "python" }
 				if vim.tbl_contains(lspWithOutFolding, ft) then
 					return { "treesitter", "indent" }

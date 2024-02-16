@@ -3,17 +3,6 @@ vim.g.mapleader = " " -- set leader key to space
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
---formats and removes whitespaces keeping without moving the cursor from its position
-function TrimWhitespaceAndFormat()
-	local save_view = vim.fn.winsaveview()
-	vim.cmd([[execute "normal! mzgg=G`z"]])
-	vim.cmd([[keeppatterns %s/\s\+$//e]])
-	vim.fn.winrestview(save_view)
-end
-
-keymap.set("v", "<leader>fm", "=", { desc = "format code" })
-keymap.set("n", "<leader>fm", TrimWhitespaceAndFormat, { noremap = true, silent = true, desc = "format code" })
-
 keymap.set("n", "<C-s>", ":w<CR>", opts) -- adds new line without leaving normal mode
 
 keymap.set("n", "<Leader>o", "o<Esc>", opts) -- adds new line without leaving normal mode
