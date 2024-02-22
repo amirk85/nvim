@@ -29,7 +29,7 @@ return {
 				["~"] = "actions.tcd",
 				["gs"] = "actions.change_sort",
 				["gx"] = "actions.open_external",
-				["g."] = "actions.toggle_hidden",
+				["."] = "actions.toggle_hidden",
 				["g\\"] = "actions.toggle_trash",
 			},
 			use_default_keymaps = false,
@@ -102,8 +102,13 @@ return {
 			},
 		})
 
-		-- vim.keymap.set("n", "<leader>ee", ":Oil --float<CR>", { silent = true, noremap = true, desc = "Oil file explorer" })
-		vim.keymap.set("n", "<leader>e", function()
+		local keymap = vim.keymap
+
+		keymap.set("n", "<leader>e", function()
+			oil.toggle_float()
+		end, { silent = true, noremap = true, desc = "Oil" })
+
+		keymap.set("n", "<leader>E", function()
 			oil.toggle_float(".")
 		end, { silent = true, noremap = true, desc = "Oil" })
 	end,

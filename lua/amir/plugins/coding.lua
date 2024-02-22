@@ -1,4 +1,28 @@
 return {
+	-- symbol outline
+	{
+		"simrat39/symbols-outline.nvim",
+		keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+		cmd = "SymbolsOutline",
+		opts = {
+			position = "left",
+			keymaps = { -- These keymaps can be a string or a table for multiple keys
+				close = { "<Esc>", "q" },
+				goto_location = "<Cr>",
+				focus_location = "o",
+				hover_symbol = "K",
+				toggle_preview = "p",
+				rename_symbol = "r",
+				code_actions = "a",
+				fold = "h",
+				unfold = "l",
+				fold_all = "W",
+				unfold_all = "E",
+				fold_reset = "R",
+			},
+		},
+	},
+
 	-- run program
 	{
 		"arjunmahishi/flow.nvim",
@@ -6,7 +30,7 @@ return {
 			require("flow").setup({
 				output = {
 					buffer = true,
-					split_cmd = "80vsplit",
+					split_cmd = "40vsplit",
 					focused = true,
 					modifiable = false,
 				},
@@ -51,9 +75,7 @@ return {
 					timeout_ms = 1000,
 				})
 
-				-- local save_view = vim.fn.winsaveview()
 				vim.cmd([[execute "normal! mzgg=G`z"]])
-				-- vim.fn.winrestview(save_view)
 			end, { desc = "Format file or range (in visual mode)" })
 		end,
 	},
