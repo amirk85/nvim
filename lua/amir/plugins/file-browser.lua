@@ -104,12 +104,14 @@ return {
 
 		local keymap = vim.keymap
 
-		keymap.set("n", "<leader>e", function()
+		keymap.set("n", "<leader>ee", function()
 			oil.toggle_float()
 		end, { silent = true, noremap = true, desc = "Oil" })
 
 		keymap.set("n", "<leader>E", function()
 			oil.toggle_float(".")
-		end, { silent = true, noremap = true, desc = "Oil" })
+		end, { silent = true, noremap = true, desc = "Oil cwd" })
+
+		keymap.set("n", "<leader>el", ":Oil<CR>", { silent = true, noremap = true, desc = "Oil cwd" })
 	end,
 }
