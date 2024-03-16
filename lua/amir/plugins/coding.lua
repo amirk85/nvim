@@ -19,6 +19,7 @@ return {
 					yaml = { "prettier" },
 					markdown = { "prettier" },
 					lua = { "stylua" },
+					python = { "isort", "black" },
 				},
 				-- format_on_save = {
 				-- 	lsp_fallback = true,
@@ -37,6 +38,20 @@ return {
 				vim.cmd([[execute "normal! mzgg=G`z"]])
 			end, { desc = "Format file or range (in visual mode)" })
 		end,
+	},
+
+	-- tagbar
+	{
+		"preservim/tagbar",
+		config = true,
+		keys = {
+			{
+				"<leader>T",
+				":TagbarToggle<CR>",
+				noremap = true,
+				silent = true,
+			},
+		},
 	},
 
 	-- bracketpairs
