@@ -32,7 +32,6 @@ return {
 				async = false,
 				timeout_ms = 1000,
 			})
-
 			vim.cmd([[execute "normal! mzgg=G`z"]])
 		end, { desc = "Format file or range (in visual mode)" })
 	end,

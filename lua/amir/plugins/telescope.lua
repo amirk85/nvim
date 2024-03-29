@@ -3,10 +3,7 @@ return {
 		"telescope.nvim",
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- fuzzy finder
-			{ "debugloop/telescope-undo.nvim" }, -- undo tree
-			{ "cljoly/telescope-repo.nvim" }, -- find git repos
 			{ "AckslD/nvim-neoclip.lua", config = true }, -- clipboard
-			{ "jvgrootveld/telescope-zoxide" }, -- change working directories
 		},
 
 		config = function(_, opts)
@@ -61,50 +58,29 @@ return {
 				},
 			}
 
-			opts.extensions = {
-				-- telescope repo
-				repo = {
-					list = {
-						fd_opts = {
-							"--no-ignore-vcs",
-						},
-						search_dirs = {
-							"~/Desktop",
-							"~/.config",
-						},
-					},
-				},
-			}
+			opts.extensions = {}
 
 			telescope.setup(opts)
 
 			telescope.load_extension("fzf")
-			telescope.load_extension("repo")
 			telescope.load_extension("neoclip")
-			telescope.load_extension("zoxide")
-			telescope.load_extension("undo")
 
 			-- set keymaps
 			local keymap = vim.keymap -- for conciseness
 
 			keymap.set("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Telescope: Find files" })
 			keymap.set("n", "<leader>fF", ":Telescope find_files cwd=%:p:h<cr>", { desc = "Telescope: Find files cwd" })
-			keymap.set("n", "<leader>fo", ":Telescope oldfiles<cr>", { desc = "Telescope: Recent files" })
-			keymap.set( "n", "<leader>fc", ":Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<cr>", { desc = "Telescope: Find in current Bfr" })
 			keymap.set("n", "<leader>ft", ":Telescope live_grep<cr>", { desc = "Telescope: Find text" })
 			keymap.set("n", "<leader>fs", ":Telescope grep_string<cr>", { desc = "Telescope: Find String" })
-			keymap.set("n", "<leader>fb", ":Telescope buffers<cr>", { desc = "Telescope: buffers" })
 			keymap.set("n", "<leader>fh", ":Telescope help_tags<cr>", { desc = "Telescope: Help" })
-			keymap.set("n", "<leader>fd", ":Telescope diagnostics<cr>", { desc = "Telescope: Diagnostics" })
-			keymap.set( "n", "<leader>fy", ":Telescope neoclip initial_mode=normal<cr>", { desc = "Telescope: Yanked history" })
-			keymap.set("n", "<leader>U", ":Telescope undo<cr>", { desc = "Telescope: Undo tree" })
-			keymap.set("n", "<leader>fz", ":Telescope zoxide list<cr>", { desc = "Telescope: Zoxide change working dir" })
-			keymap.set("n", "<leader>fr", ":Telescope repo<cr>", { desc = "Telescope: Search git repo" })
+			keymap.set(
+				"n",
+				"<leader>fy",
+				":Telescope neoclip initial_mode=normal<cr>",
+				{ desc = "Telescope: Yanked history" }
+			)
 
-			-- Telescope for git
 			keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>", { desc = "Telescope: Git branches" })
-			keymap.set("n", "<leader>gs", ":Telescope git_status<cr>", { desc = "Telescope: Git status" })
-			keymap.set("n", "<leader>gc", ":Telescope git_commits<cr>", { desc = "Telescope: Git commits" })
 		end,
 	},
 }
