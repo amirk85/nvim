@@ -1,5 +1,4 @@
 return {
-	-- mini file manager
 	-- indentline
 	{
 		"lukas-reineke/indent-blankline.nvim",
