@@ -1,19 +1,4 @@
 return {
-	{ "mg979/vim-visual-multi" },
-	-- tagbar
-	{
-		"preservim/tagbar",
-		event = "BufReadPre",
-		keys = {
-			{
-				"<leader>T",
-				":TagbarToggle<CR>",
-				noremap = true,
-				silent = true,
-			},
-		},
-	},
-
 	-- bracketpairs
 	{
 		"windwp/nvim-autopairs",
