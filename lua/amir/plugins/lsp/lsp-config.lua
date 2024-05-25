@@ -79,7 +79,7 @@ return {
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		local servers = { "html", "tsserver", "cssls", "tailwindcss", "prismals", "gopls", "pyright" }
+		local servers = { "html", "tsserver", "cssls", "tailwindcss", "gopls", "pyright" }
 
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup({

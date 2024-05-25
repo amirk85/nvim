@@ -17,7 +17,7 @@ return {
 					package_pending = "➜",
 					package_uninstalled = "✗",
 				},
-				border = "single"
+				border = "single",
 			},
 		})
 
@@ -30,11 +30,9 @@ return {
 				"lua_ls",
 				"prismals",
 				"jsonls",
-				"gopls",
+				-- "gopls",
 				"pyright",
-
 			},
-			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
 		})
 
