@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.relativenumber = true -- show relative line numbers
+-- opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 opt.tabstop = 4
