@@ -3,8 +3,6 @@ vim.g.mapleader = " " -- set leader key to space
 local keymap = vim.keymap -- for conciseness
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "<C-s>", ":w<CR>", opts) -- adds new line without leaving normal mode
-
 keymap.set("n", "<Leader>o", "o<Esc>", opts) -- adds new line without leaving normal mode
 keymap.set("n", "<Leader>O", "O<Esc>", opts) -- adds new line without leaving normal mode
 
@@ -12,7 +10,10 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 keymap.set("n", "<C-a>", "ggVG") -- selects all
-keymap.set("n", "<leader>X", ":!chmod +x %<CR>")
+keymap.set("n", "<leader>X", ":!chmod +x %<CR>") -- make file executable
+
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
@@ -26,7 +27,9 @@ keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
 keymap.set("n", "Q", "<nop>")
+keymap.set("n", "<C-z>", "<nop>")
 
+keymap.set("n", "<C-s>", ":w<CR>")
 keymap.set("n", "<leader>w", ":w<CR>")
 
 keymap.set("x", "<leader>p", [["_dP]])
@@ -57,4 +60,6 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 -- tabs
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+keymap.set("n", "<leader>tn", ":tabnew<Return>", opts)
 keymap.set("n", "<leader>tx", ":tabclose<Return>", opts)
+keymap.set("n", "<leader>to", ":tabonly<Return>", opts)

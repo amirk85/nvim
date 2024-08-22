@@ -30,7 +30,7 @@ return {
 				"lua_ls",
 				"prismals",
 				"jsonls",
-				-- "gopls",
+				"gopls",
 				"pyright",
 			},
 			automatic_installation = true, -- not the same as ensure_installed
