@@ -13,30 +13,24 @@ return {
         ["g?"] = "actions.show_help",
         ["L"] = "actions.select",
         ["<CR>"] = "actions.select",
-        ["<C-v>"] = "actions.select_vsplit",
-        ["<C-s>"] = "actions.select_split",
-        ["<C-t>"] = "actions.select_tab",
         ["<C-p>"] = "actions.preview",
         ["<C-y>"] = "actions.copy_entry_path",
         ["<ESC>"] = "actions.close",
         ["q"] = "actions.close",
         ["<C-r>"] = "actions.refresh",
         ["H"] = "actions.parent",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",
-        ["~"] = "actions.tcd",
         ["gs"] = "actions.change_sort",
         ["gx"] = "actions.open_external",
         ["."] = "actions.toggle_hidden",
-        ["g\\"] = "actions.toggle_trash",
+        ["gtt"] = "actions.toggle_trash",
       },
       use_default_keymaps = false,
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = false,
         is_hidden_file = function(name, bufnr)
-          return vim.startswith(name, ".")
+          return vim.startswith(name, ".git")
         end,
         -- This function defines what will never be shown, even when `show_hidden` is set
         is_always_hidden = function(name, bufnr)

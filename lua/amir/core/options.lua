@@ -2,6 +2,7 @@ local opt = vim.opt
 
 -- opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+opt.inccommand = "split"
 
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -9,7 +10,7 @@ opt.shiftwidth = 2
 opt.smartindent = true
 
 opt.wrap = false -- disable line wrapping
-opt.winbar = "%=%m %t"  -- shows buffer name at top right
+opt.winbar = "%=%m %t" -- shows buffer name at top right
 opt.smartindent = true
 
 -- search settings
@@ -33,7 +34,7 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- clipboard
--- opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
 opt.splitright = true -- split vertical window to the right

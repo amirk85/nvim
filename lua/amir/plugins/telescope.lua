@@ -12,11 +12,11 @@ return {
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
         wrap_results = true,
-        file_ignore_patterns = { "node_modules", "venv", ".git" },
+        file_ignore_patterns = { "node_modules", "venv", "^.git" },
         sorting_strategy = "ascending",
         layout_config = {
           horizontal = {
-            prompt_position = "top", -- top, bottom
+            prompt_position = "bottom", -- top, bottom
             preview_width = 0.5,
           },
           width = 0.9,
@@ -74,7 +74,7 @@ return {
       local keymap = vim.keymap -- for conciseness
 
       keymap.set("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Telescope: Find files" })
-      keymap.set("n", "<leader>ft", ":Telescope live_grep<cr>", { desc = "Telescope: Find text" })
+      keymap.set("n", "<leader>ft", ":Telescope live_grep<cr>", { desc = "Telescope:  text" })
       keymap.set("n", "<leader>fs", ":Telescope grep_string<cr>", { desc = "Telescope: Find String" })
       keymap.set("n", "<leader>fh", ":Telescope help_tags<cr>", { desc = "Telescope: Help" })
       keymap.set(
@@ -83,6 +83,9 @@ return {
         ":Telescope neoclip initial_mode=normal<cr>",
         { desc = "Telescope: Yanked history" }
       )
+
+      -- second-brain
+      keymap.set("n", "<leader>sb", ":Telescope find_files cwd=~/Documents/second-brain<CR>", { desc = "Second Brain" })
     end,
   },
 }

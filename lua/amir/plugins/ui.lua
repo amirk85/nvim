@@ -2,28 +2,6 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-  },
-
-  -- indentline
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufEnter",
-    main = "ibl",
-    opts = {},
-    config = function()
-      require("ibl").setup({
-        scope = {
-          enabled = false,
-          show_start = false,
-          show_end = false,
-        },
-      })
-    end,
   },
 
   -- dressing
@@ -31,16 +9,12 @@ return {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
   },
-
+  --
   -- colorizer
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      user_default_options = {
-        tailwind = true,
-      },
-    },
+    opts = { user_default_options = { tailwind = true } },
   },
 
   -- lualine
@@ -65,30 +39,6 @@ return {
     },
   },
 
-  -- ZenMode
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      plugins = {
-        gitsigns = true,
-        tmux = true,
-      },
-      window = {
-        width = 1,
-        height = 1,
-      },
-    },
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-  },
-
-  -- buffer maximizer
-  {
-    "szw/vim-maximizer",
-    keys = {
-      { "sm", "<cmd>MaximizerToggle<CR>", desc = "Maximize/minimize a split" },
-    },
-  },
 
   -- which key
   {

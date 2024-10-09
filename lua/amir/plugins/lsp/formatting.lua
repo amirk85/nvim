@@ -1,16 +1,17 @@
 return {
   "stevearc/conform.nvim",
   lazy = true,
-  event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+  event = { "BufReadPre", "BufNewFile" }, -- Triggered on file read or new file creation
   config = function()
     local conform = require("conform")
 
     conform.setup({
       formatters_by_ft = {
-        javascriptf = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
+        javascript = { "dprint", "prettierd", "prettier", stop_after_first = true },
+        javascriptf = { "dprint", "prettier", "prettierd", stop_after_first = true },
+        typescript = { "dprint", "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "dprint" },
+        typescriptreact = { "dprint" },
         css = { "prettier" },
         html = { "prettier" },
         json = { "prettier" },
@@ -21,11 +22,6 @@ return {
         go = { "goimports", "gofmt" },
         sql = { "sql-formatter", "sqlfmt" },
       },
-      -- format_on_save = {
-      -- 	lsp_fallback = true,
-      -- 	async = false,
-      -- 	timeout_ms = 1000,
-      -- },
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>fm", function()
@@ -34,7 +30,6 @@ return {
         async = false,
         timeout_ms = 1000,
       })
-      -- vim.cmd([[execute "normal! mzgg=G`z"]])
-    end, { desc = "Format file or range (in visual mode)" })
+    end, { desc = "Format file or selected range" })
   end,
 }
